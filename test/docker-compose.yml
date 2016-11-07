@@ -1,0 +1,23 @@
+version: '2'
+services:
+  postgres:
+    image: postgres
+
+  omeroserver:
+    build:
+      context: ../.
+      dockerfile: Dockerfile
+    links:
+      - postgres
+
+  omeropy:
+    build:
+      context: ../.
+      dockerfile: Dockerfile
+    links:
+      - omeroserver
+    environment:
+      - COMPONENT=py
+      - SERVER_HOST=omeroserver
+      - SERVER_PORT=4064
+

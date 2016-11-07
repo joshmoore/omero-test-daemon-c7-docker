@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e -u -x
+
+
+docker-compose -f test/docker-compose.yml up --build --abort-on-container-exit
+
+exitcode=$(docker inspect -f '{{.State.ExitCode}}' test_omeropy_1)
+
+docker-compose -f test/docker-compose.yml rm -fv
+
+exit $exitcode

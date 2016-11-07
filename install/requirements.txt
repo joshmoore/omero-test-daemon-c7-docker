@@ -1,0 +1,8 @@
+# Python installation requirements for OMERO
+# ==========================================
+#
+#      pip install -r requirements.txt
+#
+
+omego
+zeroc-ice>3.5,<3.7
