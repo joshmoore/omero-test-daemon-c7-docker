@@ -9,6 +9,8 @@ services:
       dockerfile: Dockerfile
     links:
       - postgres
+    environment:
+      - OMEROBUILD=${OMEROBUILD}
 
   omeropy:
     build:
@@ -17,7 +19,7 @@ services:
     links:
       - omeroserver
     environment:
+      - OMEROBUILD=${OMEROBUILD}
       - COMPONENT=py
       - SERVER_HOST=omeroserver
       - SERVER_PORT=4064
-

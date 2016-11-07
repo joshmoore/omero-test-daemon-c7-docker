@@ -8,9 +8,14 @@ python:
 services:
   - docker
 
+env:
+  - OMEROBUILD=OMERO-DEV-merge-build
+  - OMEROBUILD=OMERO-DEV-latest
+  - RELEASE=true  # test release
+
 before_install:
   - pip install docker-compose
   - docker-compose -v
 
 script:
-  - ./runtest
+  - ./runtest $OMEROBUILD
