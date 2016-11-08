@@ -9,13 +9,13 @@ services:
   - docker
 
 env:
-  - OMEROBUILD=OMERO-DEV-merge-build
-  - OMEROBUILD=OMERO-DEV-latest
-  - RELEASE=true  # test release
+  - OMEROBUILD=OMERO-DEV-merge-build SKIP_UPGRADE_CHECK=true
+  - OMEROBUILD=OMERO-DEV-latest SKIP_UPGRADE_CHECK=true
+  - RELEASE=true # test default
 
 before_install:
   - pip install docker-compose
   - docker-compose -v
 
 script:
-  - ./runtest $OMEROBUILD
+  - ./runtest
