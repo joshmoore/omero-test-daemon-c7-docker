@@ -43,6 +43,9 @@ services:
     image: openmicroscopy/omero-test-daemon-c7
     links:
       - postgres
+    ports:
+      - 4064:4064
+      - 4063:4063
 ```
 
 
