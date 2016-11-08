@@ -9,6 +9,9 @@ services:
       dockerfile: Dockerfile
     links:
       - postgres
+    environment:
+      - SKIP_UPGRADE_CHECK=${SKIP_UPGRADE_CHECK}
+      - OMEROBUILD=${OMEROBUILD}
 
   omeropy:
     build:
@@ -17,7 +20,8 @@ services:
     links:
       - omeroserver
     environment:
+      - SKIP_UPGRADE_CHECK=${SKIP_UPGRADE_CHECK}
+      - OMEROBUILD=${OMEROBUILD}
       - COMPONENT=py
       - SERVER_HOST=omeroserver
       - SERVER_PORT=4064
-

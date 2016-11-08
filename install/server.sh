@@ -20,7 +20,9 @@ ${OMEROPATH}/bin/omero config set omero.db.host $OMERO_DB_HOST
 ${OMEROPATH}/bin/omero config set omero.db.port $OMERO_DB_PORT
 ${OMEROPATH}/bin/omero config set omero.db.user $OMERO_DB_USER
 ${OMEROPATH}/bin/omero config set omero.db.name $OMERO_DB_NAME
-
+if [ "$SKIP_UPGRADE_CHECK" = true ]; then
+    ${OMEROPATH}/bin/omero config set omero.upgrades.url ""
+fi
 
 # initialize or upgarde the db
 if psql -h $OMERO_DB_HOST -p $OMERO_DB_PORT -U $OMERO_DB_USER -lqt | cut -d \| -f 1 | grep -qw $OMERO_DB_NAME; then
