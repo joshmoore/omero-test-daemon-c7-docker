@@ -43,8 +43,9 @@ RUN chmod a+x /tmp/install/*.sh
 
 # AS OMERO user
 USER omero
+
+# Envirment variables
 ENV HOME /home/omero
-ENV OMEROBUILD OMERO-DEV-merge-build
 ENV COMPONENT server
 
 ENV OMERO_DB_HOST postgres
@@ -52,6 +53,7 @@ ENV OMERO_DB_PORT 5432
 ENV OMERO_DB_USER postgres
 ENV OMERO_DB_NAME omero
 ENV OMERO_ROOT_PASS omero
+
 
 EXPOSE 4063 4064
 

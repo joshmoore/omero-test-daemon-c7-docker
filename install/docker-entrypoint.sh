@@ -2,12 +2,18 @@
 
 set -eux
 
-sudo pip install -r /tmp/install/requirements.txt
+OMEROBUILD=${OMEROBUILD:-}
 
 COMPONENT="${COMPONENT,,}"
 
-echo "Downloading OMERO.${COMPONENT}..."
-(cd /tmp && omego download --ice 3.6 --branch ${OMEROBUILD} ${COMPONENT})
+sudo pip install -r /tmp/install/requirements.txt
+
+echo "Downloading ${OMEROBUILD} OMERO.${COMPONENT}..."
+
+ARGS=""
+[ -n "${OMEROBUILD}" ] && ARGS="$ARGS --branch $OMEROBUILD"
+
+(cd /tmp && omego download --ice 3.6 $ARGS $COMPONENT)
 omegozip=$(ls /tmp/OMERO.${COMPONENT}*.zip)
 omerodist=${omegozip%.zip}
 rm -f $omegozip
