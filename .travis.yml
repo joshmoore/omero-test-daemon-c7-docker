@@ -9,7 +9,6 @@ services:
   - docker
 
 env:
-  - OMEROBUILD=OMERO-DEV-merge-build SKIP_UPGRADE_CHECK=true
   - OMEROBUILD=OMERO-DEV-latest SKIP_UPGRADE_CHECK=true
   - RELEASE=true # test default
 
