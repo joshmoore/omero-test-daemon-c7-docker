@@ -14,7 +14,7 @@ RUN yum install -y java-1.8.0-openjdk-devel \
 
 # Install Python and other dependences
 RUN yum install -y \
-    python-pip python-virtualenv \
+    python-pip python-virtualenv python-virtualenvwrapper \
     python-devel \
     numpy scipy \
     python-pillow \
