@@ -4,7 +4,7 @@ set -eux
 
 
 COMPONENT="${COMPONENT,,}"
-OMEROPATH=${HOME}/Omero${COMPONENT~}
+OMEROPATH=${OMEROPATH:-"${HOME}/OMERO.${COMPONENT}"}
 
 if [ "$SKIP_UPGRADE_CHECK" = true ]; then
     ${OMEROPATH}/bin/omero config set omero.upgrades.url ""

@@ -6,6 +6,9 @@ OMEROBUILD=${OMEROBUILD:-}
 
 COMPONENT="${COMPONENT,,}"
 
+OMEROPATH=${OMEROPATH:-"${HOME}/OMERO.${COMPONENT}"}
+
+
 sudo pip install -r /tmp/install/requirements.txt
 
 echo "Downloading ${OMEROBUILD} OMERO.${COMPONENT}..."
@@ -17,7 +20,6 @@ ARGS=""
 omegozip=$(ls /tmp/OMERO.${COMPONENT}*.zip)
 omerodist=${omegozip%.zip}
 rm -f $omegozip
-OMEROPATH=${HOME}/Omero${COMPONENT~}
 mv ${omerodist} ${OMEROPATH}
 
 /tmp/install/${COMPONENT}.sh "$@"
