@@ -4,8 +4,7 @@ set -eux
 
 
 COMPONENT="${COMPONENT,,}"
-OMEROPATH=${HOME}/Omero${COMPONENT~}
-
+OMEROPATH=${OMEROPATH:-"${HOME}/OMERO.${COMPONENT}"}
 
 echo "Waiting on Postgres..."
 until psql -h $OMERO_DB_HOST -p $OMERO_DB_PORT -U $OMERO_DB_USER -c '\l'; do
