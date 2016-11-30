@@ -3,11 +3,9 @@
 set -eux
 
 OMEROBUILD=${OMEROBUILD:-}
-
 COMPONENT="${COMPONENT,,}"
-
+RUNSCRIPT=${RUNSCRIPT:-"$COMPONENT"}
 OMEROPATH=${OMEROPATH:-"${HOME}/OMERO.${COMPONENT}"}
-
 
 sudo pip install -r /tmp/install/requirements.txt
 
@@ -22,4 +20,4 @@ omerodist=${omegozip%.zip}
 rm -f $omegozip
 mv ${omerodist} ${OMEROPATH}
 
-/tmp/install/${COMPONENT}.sh "$@"
+/tmp/install/${RUNSCRIPT}.sh "$@"
