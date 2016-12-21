@@ -58,9 +58,18 @@ Add COMPONENT=py to run OMERO.py package
       - omeroserver
     environment:
       - COMPONENT=py
+      - RUNSCRIPT=py
       - SERVER_HOST=omeroserver
       - SERVER_PORT=4064
     command: /home/omero/OmeroPy/bin/omero config get
+```
+
+Note: to get access to importer.jar in tests use:
+
+```
+    environment:
+      - COMPONENT=server
+      - RUNSCRIPT=py
 ```
 
 mount your own volume containing OMERO python client, set custom command and run own tests.
